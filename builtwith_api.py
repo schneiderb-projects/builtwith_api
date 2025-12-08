@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-builtWithAPIKey = os.getenv("BUILTWITH_API_KEY", "BUILTWITH_API_KEY NOT FOUND")
+builtWithAPIKey = os.getenv("BUILTWITH_API_KEY", None)
 
 class BuiltWithAPIError(Exception):
     """Base exception for BuiltWith API errors"""
@@ -38,6 +38,8 @@ class BuiltWithListsClient:
         """
         self.api_key = api_key
         self.session = requests.Session()
+        if self.api_key is None:
+            raise ValueError("BUILTWITH_API_KEY is not set")
     
     def _build_url(self, format: Literal["json", "xml", "txt", "csv", "tsv"] = "json") -> str:
         """
@@ -288,6 +290,8 @@ class BuiltWithKeywordsClient:
         """
         self.api_key = api_key
         self.session = requests.Session()
+        if self.api_key is None:
+            raise ValueError("BUILTWITH_API_KEY is not set")
     
     def _build_url(self, format: Literal["json", "xml"] = "json") -> str:
         """
