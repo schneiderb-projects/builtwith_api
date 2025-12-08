@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-builtWithAPIKey = os.getenv("BUILTWITH_API_KEY")
+builtWithAPIKey = os.getenv("BUILTWITH_API_KEY", "BUILTWITH_API_KEY NOT FOUND")
 
 class BuiltWithAPIError(Exception):
     """Base exception for BuiltWith API errors"""
