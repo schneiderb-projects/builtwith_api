@@ -2,3 +2,4 @@ venv/
 .env
 .cursor/
 .vscode/
+__pycache__/
