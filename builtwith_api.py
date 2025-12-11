@@ -118,7 +118,7 @@ class BuiltWithListsClient:
         """
         params = {
             "KEY": self.api_key,
-            "TECH": technology.replace(" ", "-")
+            "TECH": technology
         }
         
         if include_meta:
